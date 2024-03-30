@@ -63,4 +63,24 @@ class Disquera {
     public function setOwner($value){
         $this->owner = $value;
     }
+
+    public function dentroHorarioAtencion($hora,$minutos){
+        $dentroHorario = false;
+        if ($hora * 60 + $minutos < $this->getHoraHasta() * 60 && $hora * 60 + $minutos > $this->getHoraDesde() * 60){
+            $dentroHorario = true;
+        }
+        return $dentroHorario;
+    }
+
+    public function abrirDisquera($hora,$minutos){
+        if($this->dentroHorarioAtencion($hora, $minutos)){
+            $this->setEstado("abierta");
+        }
+    }
+
+    public function cerrarDisquera($hora, $minutos){
+        if (!$this->dentroHorarioAtencion($hora, $minutos)){
+            $this->setEstado("cerrada");
+        }
+    }
 }
