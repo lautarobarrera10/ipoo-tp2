@@ -42,16 +42,15 @@ class Banco {
         return $mejorMostrador;
     }
 
-    public function atender($cliente){
+    public function atender($tramite){
         $rta = "";
-        $tramite = $cliente->getTramite();
         $mejorMostrador = $this->mejorMostradorPara($tramite);
         $mostradorLleno = $mejorMostrador->getColaClientes() == $mejorMostrador->getMaximoCola();
         if ($mostradorLleno){
             $rta = "Será antendido en cuanto haya lugar en un mostrador";
         } else {
             $rta = "Avance por el mostrador N°" . $mejorMostrador->getNumeroMostrador();
-            $mejorMostrador->setColaClientes($mejorMostrador->getColaClientes() + 1);
+            $mejorMostrador->sumarTramiteALaCola($tramite);
         }
         return $rta;
     }

@@ -2,17 +2,17 @@
 
 class Cliente {
     private $numeroCliente;
-    private $tramite;
+    private $nombre;
 
-    public function __construct($numeroCliente, $tramite){
+    public function __construct($numeroCliente, $nombre){
         $this->numeroCliente = $numeroCliente;
-        $this->tramite = $tramite;
+        $this->nombre = $nombre;
     }
 
     public function __toString(){
         return
         "🫅 Cliente N°" . $this->getNumeroCliente() . "\n" .
-        "Tramite: \n" . $this->getTramite();
+        "Nombre: \n" . $this->getNombre();
     }
 
     public function getNumeroCliente(){
@@ -23,11 +23,11 @@ class Cliente {
         $this->numeroCliente = $value;
     }
 
-    public function getTramite(){
-        return $this->tramite;
+    public function getNombre(){
+        return $this->nombre;
     }
 
-    public function setTramite($value){
-        $this->tramite = $value;
+    public function setNombre($value){
+        $this->nombre = $value;
     }
 }
